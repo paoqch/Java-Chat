@@ -67,7 +67,32 @@ public class ChatClient {
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		/**
+		 * Creacion del acceso al socket para la comunicacion
+		 * y lectura y escritura de mensajes
+		 */
+		Thread principal = new Thread(new Runnable() {
+			public void run() {
+				try {
+					servidor = new ServerSocket(9000);
+						while(true) {
+							socket = servidor.accept();
+							leer();
+							escribir();
+							
+						}
+				} catch (UnknownHostException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				}	
+			}
+		});
+		principal.start();
 	}
+	
 	/**
 	 * Creacion del metodo leer que permite visualizar el mensaje, ip, puerto 
 	 */
