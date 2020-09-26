@@ -37,7 +37,7 @@ public class ChatClient {
 	 * Creacion de la interfaz 
 	 */
 	public void hacerInterfaz() {
-		ventana_chat = new JFrame("Servidor");
+		ventana_chat = new JFrame("Cliente");
 		btn_enviar = new JButton("Enviar");
 		txt_mensaje = new JTextField(20);
 		ip = new JTextField(4);
