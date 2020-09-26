@@ -77,5 +77,16 @@ public class ChatServer {
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+	/**
+	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
+	 */
+	public static void main(String[] args) {
+		new ChatServer();
+
+
+	}
 
 }
+
