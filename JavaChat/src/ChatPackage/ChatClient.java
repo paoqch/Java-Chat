@@ -95,6 +95,38 @@ public class ChatClient {
 	}
 	
 	/**
+	 * Creacion de metodo de escritura para obtener los datos a enviar
+	 */
+	public void escribir() {
+		Thread escribir_hilo = new Thread(new Runnable() {
+			public void run() {
+				try {
+					escritor = new PrintWriter(socket.getOutputStream(),true);
+					btn_enviar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							String enviar_ip = ip.getText();
+							escritor.println(enviar_ip);
+							String enviar_puerto = puerto.getText();
+							escritor.println(enviar_puerto);
+							String enviar_mensaje = txt_mensaje.getText();
+							escritor.println(enviar_mensaje);
+							txt_mensaje.setText("");
+							
+						}
+					});
+				} catch (UnknownHostException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				}	
+			}
+		});
+		escribir_hilo.start();
+	}
+	
+	/**
 	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
 	 */
 	public static void main(String[] args) {
