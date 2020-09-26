@@ -77,8 +77,36 @@ public class ChatServer {
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+	
+	/**
+	 * Creacion del metodo leer que permite visualizar el mensaje, ip, puerto 
+	 */
+	public void leer() {
+		Thread leer_hilo = new Thread(new Runnable() {
+			public void run() {
+				try {
+					lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+						while(true) {
+							String ip_recibida = lector.readLine();
+							String puerto_recibido = lector.readLine();
+							String mensaje_recibido = lector.readLine();
+							area_chat.append("IP: "+ip_recibida+" Port: "+puerto_recibido+" Mensaje Servidor: "+mensaje_recibido+"\n");
+								
+						}
+					
+				} catch (UnknownHostException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				}
+			}
+		});
+		leer_hilo.start();
+	}
+
+
 	/**
 	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
 	 */
