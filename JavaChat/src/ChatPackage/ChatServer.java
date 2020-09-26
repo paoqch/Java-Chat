@@ -48,7 +48,7 @@ public class ChatServer {
 	 * Creacion de la interfaz 
 	 */
 	public void hacerInterfaz() {
-		ventana_chat = new JFrame("Cliente");
+		ventana_chat = new JFrame("Servidor");
 		btn_enviar = new JButton("Enviar");
 		txt_mensaje = new JTextField(20);
 		ip = new JTextField(4);
@@ -77,6 +77,7 @@ public class ChatServer {
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	
 	/**
 	 * Creacion del metodo leer que permite visualizar el mensaje, ip, puerto 
@@ -90,7 +91,7 @@ public class ChatServer {
 							String ip_recibida = lector.readLine();
 							String puerto_recibido = lector.readLine();
 							String mensaje_recibido = lector.readLine();
-							area_chat.append("IP: "+ip_recibida+" Port: "+puerto_recibido+" Mensaje Servidor: "+mensaje_recibido+"\n");
+							area_chat.append("IP: "+ip_recibida+" Port: 9000"+" Mensaje Cliente: "+mensaje_recibido+"\n");
 								
 						}
 					
@@ -105,7 +106,36 @@ public class ChatServer {
 		});
 		leer_hilo.start();
 	}
-
+	/**
+	 * Creacion de metodo de escritura para obtener los datos a enviar
+	 */
+	public void escribir() {
+		Thread escribir_hilo = new Thread(new Runnable() {
+			public void run() {
+				try {
+					escritor = new PrintWriter(socket.getOutputStream(),true);
+					btn_enviar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							String enviar_ip = ip.getText();
+							escritor.println(enviar_ip);
+							String enviar_puerto = puerto.getText();
+							escritor.println(enviar_puerto);
+							String enviar_mensaje = txt_mensaje.getText();
+							escritor.println(enviar_mensaje);
+							txt_mensaje.setText("");
+						}
+					});
+				} catch (UnknownHostException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				}
+			}
+		});
+		escribir_hilo.start();
+	}
 
 	/**
 	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
@@ -117,4 +147,3 @@ public class ChatServer {
 	}
 
 }
-
