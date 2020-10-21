@@ -1,4 +1,18 @@
-2020-10-21 14:36:39 INFO  ChatClient:83 - Iniciando chat cliente
-2020-10-21 14:38:10 INFO  ChatClient:88 - Iniciando chat servidor
-2020-10-21 14:38:10 INFO  ChatClient:113 - Conexión con el cliente
-2020-10-21 14:38:10 INFO  ChatClient:112 - Conexión con el servidor
+2020-10-21 15:12:31 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 15:12:39 INFO  ChatClient:88 - Iniciando chat servidor
+2020-10-21 15:12:39 INFO  ChatClient:112 - Conexión con el servidor
+2020-10-21 15:12:39 INFO  ChatClient:113 - Conexión con el cliente
+2020-10-21 15:13:13 INFO  ChatClient:120 - IP de conexión del cliente: 127.0.0.1
+2020-10-21 15:13:25 INFO  ChatClient:120 - Mensaje recibido del servidor Hola
+2020-10-21 15:16:22 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 15:16:31 INFO  ChatClient:120 - IP de conexión del cliente: null
+2020-10-21 15:16:31 INFO  ChatClient:120 - IP de conexión del cliente: null
+2020-10-21 15:18:02 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 15:18:08 INFO  ChatClient:88 - Iniciando chat servidor
+2020-10-21 15:18:08 INFO  ChatClient:113 - Conexión con el cliente
+2020-10-21 15:18:08 INFO  ChatClient:112 - Conexión con el servidor
+2020-10-21 15:18:33 INFO  ChatClient:153 - Mensaje enviado del cliente: Hola
+2020-10-21 15:18:33 INFO  ChatClient:120 - IP de conexión del cliente: 127.0.0.1
+2020-10-21 15:18:49 INFO  ChatClient:120 - Mensaje recibido del servidor: Hola
+2020-10-21 15:19:05 INFO  ChatClient:153 - Mensaje enviado del cliente: Como estás?
+2020-10-21 15:19:05 INFO  ChatClient:120 - IP de conexión del cliente: 127.0.0.1
