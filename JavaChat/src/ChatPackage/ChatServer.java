@@ -95,6 +95,7 @@ public class ChatServer {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
+				  
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
 				}	
@@ -116,6 +117,7 @@ public class ChatServer {
 							String ip_recibida = lector.readLine();
 							String mensaje_recibido = lector.readLine();
 							area_chat.append("IP: "+ip_recibida+" Port: 9000"+" Mensaje Cliente: "+mensaje_recibido+"\n");
+							log.info("IP de conexión del cliente: "+ip_recibida);
 								
 						}
 				} catch (UnknownHostException e1) {
@@ -135,7 +137,9 @@ public class ChatServer {
 	 */
 	public void escribir() {
 		Thread escribir_hilo = new Thread(new Runnable() {
+			
 			public void run() {
+				
 				try {
 					escritor = new PrintWriter(socket.getOutputStream(),true);
 					btn_enviar.addActionListener(new ActionListener() {
@@ -160,11 +164,12 @@ public class ChatServer {
 		escribir_hilo.start();
 	}
 	
-		/**
-		 * Creacion de instancia que permite comunicarse con la interfaz y metodos
-		 */
+	/**
+	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
+	 */
 		public static void main(String[] args) {
 			new ChatServer();
 		}
-	
+		
 }
+
