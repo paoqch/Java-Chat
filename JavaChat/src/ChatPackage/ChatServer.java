@@ -19,11 +19,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
+
 /**
  * Declaracion de variable y elementos que se usan en la parte grafica 
  * y el acceso a sockets
  */
 public class ChatServer {
+	static final Logger log = Logger.getLogger(ChatClient.class);
 	JFrame ventana_chat = null;
 	JButton btn_enviar = null;
 	JTextField txt_mensaje = null;
@@ -82,6 +85,7 @@ public class ChatServer {
 		 */
 		Thread principal = new Thread(new Runnable() {
 			public void run() {
+				log.info("Iniciando chat servidor");
 				try {
 				socket = new Socket("127.0.0.1",9000);
 				leer();
@@ -105,6 +109,7 @@ public class ChatServer {
 	public void leer() {
 		Thread leer_hilo = new Thread(new Runnable() {
 			public void run() {
+				log.info("Conexión con el cliente");
 				try {
 					lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						while(true) {
@@ -155,11 +160,11 @@ public class ChatServer {
 		escribir_hilo.start();
 	}
 	
-	/**
-	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
-	 */
-	public static void main(String[] args) {
-		new ChatServer();
-	}
+		/**
+		 * Creacion de instancia que permite comunicarse con la interfaz y metodos
+		 */
+		public static void main(String[] args) {
+			new ChatServer();
+		}
 	
 }
