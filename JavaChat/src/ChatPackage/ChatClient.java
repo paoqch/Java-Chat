@@ -67,7 +67,7 @@ public class ChatClient {
 		ventana_chat.setBounds(600,300,280,350);
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
-		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana_chat.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		/**
 		 * Creacion del acceso al socket para la comunicacion
