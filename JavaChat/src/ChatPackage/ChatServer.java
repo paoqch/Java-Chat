@@ -94,10 +94,12 @@ public class ChatServer {
 				} catch (UnknownHostException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error("No existe el servidor local");
 				} catch (IOException e1) {
 				  
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
+					log.error("Fallo en el inicio el chat servidor");
 				}	
 			}
 		});
@@ -123,9 +125,11 @@ public class ChatServer {
 				} catch (UnknownHostException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error("No existe conexión con el cliente");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
+					log.error("Fallo en la conexión con el cliente");
 				}
 			}
 		});
@@ -158,6 +162,7 @@ public class ChatServer {
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
+					log.error("Fallo en el envio del mensaje al cliente");
 				}
 			}
 		});
