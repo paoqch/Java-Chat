@@ -1,6 +1,10 @@
 package ChatPackage;
 
 import javax.swing.*;
+
+import org.apache.log4j.Logger;
+
+
 import java.awt.*;
 import java.io.*;
 import java.awt.event.*;
@@ -8,7 +12,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.apache.log4j.Logger;
 
 /**
  * Declaracion de variable y elementos que se usan en la parte grafica 
@@ -33,6 +36,7 @@ public class ChatClient {
 	PrintWriter escritor = null;
 	
 	public ChatClient() {
+		
 		hacerInterfaz();
 	}
 	
@@ -74,6 +78,7 @@ public class ChatClient {
 		 * y lectura y escritura de mensajes
 		 */
 		Thread principal = new Thread(new Runnable() {
+			
 			public void run() {
 				log.info("Iniciando chat cliente");
 				try {
@@ -83,14 +88,12 @@ public class ChatClient {
 						leer();
 						escribir();
 					}
-						
-					
-				
 				
 				} catch (UnknownHostException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
+				 
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
 				}	
@@ -105,20 +108,23 @@ public class ChatClient {
 	public void leer() {
 		Thread leer_hilo = new Thread(new Runnable() {
 			public void run() {
+				
 				log.info("Conexión con el servidor");
+				
 				try {
 					lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						while(true) {
 							String ip_recibida = lector.readLine();
-							
 							String mensaje_recibido = lector.readLine();
 							area_chat.append("IP: "+ip_recibida+" Port: 9000"+" Mensaje Servidor: "+mensaje_recibido+"\n");
-								
+							log.info("Mensaje recibido del servidor: "+mensaje_recibido);
 						}
+						
 				} catch (UnknownHostException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
+				 
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
 				}
@@ -133,6 +139,7 @@ public class ChatClient {
 	public void escribir() {
 		Thread escribir_hilo = new Thread(new Runnable() {
 			public void run() {
+				
 				try {
 					escritor = new PrintWriter(socket.getOutputStream(),true);
 					btn_enviar.addActionListener(new ActionListener() {
@@ -143,12 +150,13 @@ public class ChatClient {
 							String enviar_mensaje = txt_mensaje.getText();
 							escritor.println(enviar_mensaje);
 							txt_mensaje.setText("");
+							log.info("Mensaje enviado del cliente: "+enviar_mensaje);
 						}
 					});
 				} catch (UnknownHostException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				} catch (IOException e1) {
+				} catch (IOException e1) {		
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
 				}
@@ -157,11 +165,12 @@ public class ChatClient {
 		escribir_hilo.start();
 	}
 	
-		/**
-		 * Creacion de instancia que permite comunicarse con la interfaz y metodos
-		 */
+	/**
+	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
+	 */
 		public static void main(String[] args) {
 			new ChatClient();
 		}
 	
 }
+
