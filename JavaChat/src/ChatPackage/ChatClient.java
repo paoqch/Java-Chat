@@ -8,12 +8,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.apache.log4j.Logger;
 
 /**
  * Declaracion de variable y elementos que se usan en la parte grafica 
  * y el acceso a sockets
  */
 public class ChatClient {
+	static final Logger log = Logger.getLogger(ChatClient.class);
 	JFrame ventana_chat = null;
 	JButton btn_enviar = null;
 	JTextField txt_mensaje = null;
@@ -73,6 +75,7 @@ public class ChatClient {
 		 */
 		Thread principal = new Thread(new Runnable() {
 			public void run() {
+				log.info("Iniciando chat cliente");
 				try {
 					servidor = new ServerSocket(9000);
 					while(true) {
@@ -102,6 +105,7 @@ public class ChatClient {
 	public void leer() {
 		Thread leer_hilo = new Thread(new Runnable() {
 			public void run() {
+				log.info("Conexión con el servidor");
 				try {
 					lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						while(true) {
@@ -153,11 +157,11 @@ public class ChatClient {
 		escribir_hilo.start();
 	}
 	
-	/**
-	 * Creacion de instancia que permite comunicarse con la interfaz y metodos
-	 */
-	public static void main(String[] args) {
-		new ChatClient();
-	}
+		/**
+		 * Creacion de instancia que permite comunicarse con la interfaz y metodos
+		 */
+		public static void main(String[] args) {
+			new ChatClient();
+		}
 	
 }
