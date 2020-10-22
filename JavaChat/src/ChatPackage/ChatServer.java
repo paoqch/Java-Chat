@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
  * y el acceso a sockets
  */
 public class ChatServer {
-	static final Logger log = Logger.getLogger(ChatClient.class);
+	static final Logger log = Logger.getLogger(ChatServer.class);
 	JFrame ventana_chat = null;
 	JButton btn_enviar = null;
 	JTextField txt_mensaje = null;
@@ -95,11 +95,11 @@ public class ChatServer {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					log.error("No existe el servidor local");
+					
 				} catch (IOException e1) {
 				  
 					// TODO Auto-generated catch block
-					System.out.println(e1.getMessage());
-					log.error("Fallo en el inicio el chat servidor");
+					log.error("Fallo en el inicio el chat servidor"+e1);
 				}	
 			}
 		});
@@ -128,8 +128,8 @@ public class ChatServer {
 					log.error("No existe conexión con el cliente");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					System.out.println(e1.getMessage());
-					log.error("Fallo en la conexión con el cliente");
+					
+					log.error("Fallo en la conexión con el cliente"+e1);
 				}
 			}
 		});
@@ -161,8 +161,7 @@ public class ChatServer {
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					System.out.println(e1.getMessage());
-					log.error("Fallo en el envio del mensaje al cliente");
+					log.error("Fallo en el envio del mensaje al cliente"+e1);
 				}
 			}
 		});
@@ -177,4 +176,3 @@ public class ChatServer {
 		}
 		
 }
-
