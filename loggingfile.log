@@ -16,3 +16,17 @@
 2020-10-21 15:18:49 INFO  ChatClient:120 - Mensaje recibido del servidor: Hola
 2020-10-21 15:19:05 INFO  ChatClient:153 - Mensaje enviado del cliente: Como estás?
 2020-10-21 15:19:05 INFO  ChatClient:120 - IP de conexión del cliente: 127.0.0.1
+2020-10-21 20:39:59 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 20:39:59 ERROR ChatClient:99 - Fallo en el inicio el chat clientejava.net.BindException: Address already in use
+2020-10-21 20:41:17 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 20:41:29 INFO  ChatServer:88 - Iniciando chat servidor
+2020-10-21 20:41:29 INFO  ChatServer:115 - Conexión con el cliente
+2020-10-21 20:41:29 INFO  ChatClient:113 - Conexión con el servidor
+2020-10-21 20:42:42 INFO  ChatClient:156 - Mensaje enviado del cliente: Hola
+2020-10-21 20:42:42 INFO  ChatServer:122 - IP de conexión del cliente: 127.0.0.1
+2020-10-21 20:42:55 INFO  ChatClient:121 - Mensaje recibido del servidor: Como estás?
+2020-10-21 20:43:08 INFO  ChatServer:88 - Iniciando chat servidor
+2020-10-21 20:43:08 INFO  ChatClient:113 - Conexión con el servidor
+2020-10-21 20:43:08 INFO  ChatServer:115 - Conexión con el cliente
+2020-10-21 20:43:21 INFO  ChatClient:83 - Iniciando chat cliente
+2020-10-21 20:43:21 ERROR ChatClient:99 - Fallo en el inicio el chat clientejava.net.BindException: Address already in use
